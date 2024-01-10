@@ -1,0 +1,83 @@
+#root {
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  font-family: "Play" !important;
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus,
+.image-gallery-thumbnail:hover {
+  border: 2px solid #212529 !important;
+}
+
+.image-gallery-thumbnail {
+  width: 100px !important;
+  height: 64px !important;
+}
+.image-gallery-thumbnail .image-gallery-thumbnail-inner {
+  height: 100%;
+}
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+  object-fit: cover;
+  height: 100%;
+}
+.image-gallery-icon:hover {
+  color: #fff !important;
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  width: 40px !important;
+}
+
+.image-gallery-svg:hover,
+.image-gallery-svg:hover,
+.image-gallery-svg:hover,
+.image-gallery-svg:hover {
+  stroke: #fff !important;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.input-range__slider {
+  background: #121212 !important;
+  border: 1px solid #121212 !important;
+}
+
+.input-range__label-container {
+  font-family: "Play" !important;
+  font-size: 16px;
+  color: #121212;
+}
+
+.input-range__track {
+  background: #c2c2c2 !important;
+  transition: none !important;
+}
+
+.input-range__track--active {
+  background: #121212 !important;
+}
+
+.input-range__label--value {
+  top: -2.1rem !important;
+}
+
+.input-range__label--max .input-range__label-container {
+  left: 0% !important;
+}
+
+.input-range__label-container {
+  left: 0% !important;
+}
+
+.input-range__slider-container {
+  transition: none !important;
+}

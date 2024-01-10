@@ -1,0 +1,1 @@
+export { WhyMeComponent } from "./WhyMeComponent";

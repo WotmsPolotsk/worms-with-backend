@@ -1,0 +1,12 @@
+export { default as Apple } from "./apple.svg";
+export { default as Bank } from "./bank.svg";
+export { default as Coins } from "./coins.svg";
+export { default as Dollar } from "./dollar.svg";
+export { default as Fish } from "./fish.svg";
+export { default as Handshake } from "./handshake.svg";
+export { default as Mail } from "./mail.svg";
+export { default as Phone } from "./phone.svg";
+export { default as Shipping } from "./shipping.svg";
+export { default as User } from "./user.svg";
+export { default as Users } from "./users.svg";
+export { default as Warning } from "./warning.svg";
