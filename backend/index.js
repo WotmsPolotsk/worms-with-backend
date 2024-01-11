@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
@@ -20,12 +21,6 @@ const transporter = nodemailer.createTransport({
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
-});
-
-app.get("/", (req, res) => {
-  res.json({
-    message: "Hello from worms backend",
-  });
 });
 
 app.post("/api", (req, res) => {
@@ -59,4 +54,10 @@ app.post("/api", (req, res) => {
   } catch (e) {
     return res.status(500).send("Упс, что-то пошло не так!");
   }
+});
+
+app.use(express.static(path.resolve(__dirname, "../frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
 });

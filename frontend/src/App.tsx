@@ -6,17 +6,6 @@ import "./App.css";
 import { Home } from "./pages/Home";
 
 function App() {
-  const data = [
-    { label: "Имя", value: "Nikita" },
-    { label: "Номер", value: "+3753344343" },
-  ];
-
-  // useEffect(() => {
-  //   sendEmalService(data)
-  //     .then((res) => console.log(res))
-  //     .catch(() => console.log("Упс что-то не так"));
-  // }, []);
-
   return <Home />;
 }
 
