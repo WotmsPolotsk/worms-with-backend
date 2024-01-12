@@ -16,7 +16,7 @@ interface FormWithDescriptionProps {
   secondaryButon?: ReactNode;
   buttonText?: string;
   addData?: Array<{ label: string; value: string }>;
-  callback?: () => void;
+  callback?: (data: { text: string; type: "error" | "success" }) => void;
 }
 
 const defaultFormState = {
@@ -167,16 +167,20 @@ export const FormWithDescription = (props: FormWithDescriptionProps) => {
         : fieldsResult;
 
       sendEmalService(submitResult)
-        .then((data) => alert(data))
-        .catch(() => alert("Что-то пошло не так"));
+        .then((data) => {
+          if (callback) {
+            callback({ text: data, type: "success" });
+          }
+        })
+        .catch(() => {
+          if (callback) {
+            callback({ text: "Упс, что-то пошло не так", type: "error" });
+          }
+        });
 
       setFieldsErros(defaultFormStateError);
       setFields(defaultFormState);
       setFieldsTouch(defaultFormStateTouch);
-
-      if (callback) {
-        callback();
-      }
     }
   }, [fields, fieldsErrors]);
 

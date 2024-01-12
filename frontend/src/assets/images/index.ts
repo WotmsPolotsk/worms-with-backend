@@ -16,5 +16,8 @@ export { default as Basket4 } from "./basket4.png";
 export { default as Basket5 } from "./basket5.png";
 export { default as WormsImage } from "./worms.png";
 
+export { default as ErrorIcon } from "./error.png";
+export { default as SuccessIcon } from "./success.png";
+
 export { default as Play } from "./play.png";
 export { default as Video } from "./video.mp4";

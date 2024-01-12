@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ButtonStyled,
   ModalWindowContainer,
@@ -7,6 +7,7 @@ import {
 } from "./styled";
 import { FlexWrapper } from "@worms/common/FlexWrapper";
 import { FormWithDescription } from "../FormWithDescription";
+import { Notification } from "../Notification";
 
 interface ModalFormProps {
   isOpen: boolean;
@@ -22,6 +23,16 @@ export const ModalForm = (props: ModalFormProps) => {
     title = "Оставьте ваши контактные данные и мы вам перезвоним",
     data,
   } = props;
+
+  const [notification, setNotificationData] = useState<{
+    isOpen: boolean;
+    type: "error" | "success";
+    text: string;
+  }>({
+    isOpen: false,
+    type: "success",
+    text: "",
+  });
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -54,13 +65,22 @@ export const ModalForm = (props: ModalFormProps) => {
     };
   }, [isOpen]);
 
+  const callback = (data: { text: string; type: "error" | "success" }) => {
+    onClose();
+    setNotificationData({
+      isOpen: true,
+      type: data.type,
+      text: data.text,
+    });
+  };
+
   return isOpen ? (
     <ModalWindowContainer>
       <ModalWindowStyled ref={ref}>
         <FlexWrapper flexDirection="column" alignItems="center">
           <TitleStyled>{title}</TitleStyled>
           <FormWithDescription
-            callback={() => onClose()}
+            callback={callback}
             addData={data}
             secondaryButon={
               <ButtonStyled
@@ -73,5 +93,18 @@ export const ModalForm = (props: ModalFormProps) => {
         </FlexWrapper>
       </ModalWindowStyled>
     </ModalWindowContainer>
+  ) : notification.isOpen ? (
+    <Notification
+      onClose={() =>
+        setNotificationData({
+          isOpen: false,
+          type: "success",
+          text: "",
+        })
+      }
+      isOpen={notification.isOpen}
+      text={notification.text}
+      type={notification.type}
+    />
   ) : null;
 };

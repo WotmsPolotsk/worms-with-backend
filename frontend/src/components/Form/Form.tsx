@@ -6,6 +6,7 @@ import { Mail, Phone, User } from "@worms/assets";
 import { FlexWrapper } from "@worms/common/FlexWrapper";
 import { Input } from "@worms/common/Input";
 import { sendEmalService } from "@worms/services/sendEmalService";
+import { Notification } from "../Notification";
 
 const reqExpEmail =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -37,6 +38,16 @@ export const Form = (props: FormProps) => {
     buttonText = "Сделать заказ онлайн",
     addData,
   } = props;
+
+  const [notification, setNotificationData] = useState<{
+    isOpen: boolean;
+    type: "error" | "success";
+    text: string;
+  }>({
+    isOpen: false,
+    type: "success",
+    text: "",
+  });
 
   const [fields, setFields] = useState(defaultFormState);
 
@@ -151,8 +162,20 @@ export const Form = (props: FormProps) => {
         : fieldsResult;
 
       sendEmalService(submitResult)
-        .then((data) => alert(data))
-        .catch(() => alert("Что-то пошло не так"));
+        .then((data) =>
+          setNotificationData({
+            isOpen: true,
+            type: "success",
+            text: data,
+          })
+        )
+        .catch(() =>
+          setNotificationData({
+            isOpen: true,
+            type: "error",
+            text: "Упс, что-то пошло не так",
+          })
+        );
 
       setFieldsErros(defaultFormState);
       setFields(defaultFormState);
@@ -161,43 +184,60 @@ export const Form = (props: FormProps) => {
   }, [fields, fieldsErrors, fieldsTouch]);
 
   return (
-    <FormStyled>
-      <FlexWrapper flexDirection="column" width="100%" gap="16px">
-        <Input
-          onChange={onChangeField("name")}
-          error={fieldsErrors.name}
-          value={fields.name}
-          label="Имя"
-          iconSrc={User}
-          onBlur={onBlurField("name")}
+    <>
+      <FormStyled>
+        <FlexWrapper flexDirection="column" width="100%" gap="16px">
+          <Input
+            onChange={onChangeField("name")}
+            error={fieldsErrors.name}
+            value={fields.name}
+            label="Имя"
+            iconSrc={User}
+            onBlur={onBlurField("name")}
+          />
+          <Input
+            onChange={onChangeField("email")}
+            error={fieldsErrors.email}
+            value={fields.email}
+            label="Email"
+            iconSrc={Mail}
+            onBlur={onBlurField("email")}
+          />
+          <Input
+            onChange={onChangeField("phone")}
+            error={fieldsErrors.phone}
+            value={fields.phone}
+            label="Телефон"
+            iconSrc={Phone}
+            onBlur={onBlurField("phone")}
+          />
+          <ButtonsPanel
+            flexDirection="column"
+            width="100%"
+            gap="16px"
+            flexWrap="nowrap"
+            alignItems="center"
+          >
+            <ButtonStyled onClick={onSubmit} text={buttonText} width={"100%"} />
+            {secondaryButon && secondaryButon}
+          </ButtonsPanel>
+        </FlexWrapper>
+      </FormStyled>
+
+      {notification.isOpen && (
+        <Notification
+          onClose={() =>
+            setNotificationData({
+              isOpen: false,
+              type: "success",
+              text: "",
+            })
+          }
+          isOpen={notification.isOpen}
+          text={notification.text}
+          type={notification.type}
         />
-        <Input
-          onChange={onChangeField("email")}
-          error={fieldsErrors.email}
-          value={fields.email}
-          label="Email"
-          iconSrc={Mail}
-          onBlur={onBlurField("email")}
-        />
-        <Input
-          onChange={onChangeField("phone")}
-          error={fieldsErrors.phone}
-          value={fields.phone}
-          label="Телефон"
-          iconSrc={Phone}
-          onBlur={onBlurField("phone")}
-        />
-        <ButtonsPanel
-          flexDirection="column"
-          width="100%"
-          gap="16px"
-          flexWrap="nowrap"
-          alignItems="center"
-        >
-          <ButtonStyled onClick={onSubmit} text={buttonText} width={"100%"} />
-          {secondaryButon && secondaryButon}
-        </ButtonsPanel>
-      </FlexWrapper>
-    </FormStyled>
+      )}
+    </>
   );
 };
