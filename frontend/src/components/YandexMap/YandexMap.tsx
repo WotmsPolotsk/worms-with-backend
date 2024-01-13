@@ -8,7 +8,7 @@ import { Title } from "@worms/common/Title";
 import { useWindowSize } from "@worms/hooks/useWindowSize";
 import { ADAPTIVE } from "@worms/utils/constants";
 
-const SubtitleStyled = styled.h5`
+const SubtitleStyled = styled.span`
   font-size: 22px;
   text-transform: uppercase;
   color: #fff;

@@ -34,7 +34,7 @@ export const RowStyled = styled(Row)`
   justify-content: space-between;
   align-items: center;
 `;
-export const TitleStyled = styled.h5<{
+export const TitleStyled = styled.h4<{
   isShowed: boolean;
   isRightToLeft: boolean;
 }>`

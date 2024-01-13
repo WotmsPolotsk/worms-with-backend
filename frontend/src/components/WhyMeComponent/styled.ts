@@ -48,7 +48,7 @@ export const CaseStyled = styled(FlexWrapper)<{
     `}
 `;
 
-export const IconTextStyled = styled.h5`
+export const IconTextStyled = styled.span`
   color: #fff;
   font-size: 16px;
   text-align: center;

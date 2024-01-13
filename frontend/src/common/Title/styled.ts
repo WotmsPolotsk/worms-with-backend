@@ -1,7 +1,7 @@
 import { ADAPTIVE } from "@worms/utils/constants";
 import styled from "styled-components";
 
-export const Title = styled.h3<{ colorValue?: string }>`
+export const Title = styled.h2<{ colorValue?: string }>`
   font-size: 28px;
   text-transform: uppercase;
   margin-bottom: 40px;

@@ -70,7 +70,7 @@ export const TitleStyled = styled.h1`
   color: #fff;
 `;
 
-export const SubtitleStyled = styled.h4`
+export const SubtitleStyled = styled.span`
   padding-left: 3px;
   text-transform: uppercase;
   color: #fff;

@@ -102,7 +102,7 @@ export const MaskStyled = styled.div`
   z-index: 0;
 `;
 
-export const TitleStyled = styled.h4`
+export const TitleStyled = styled.span`
   color: #fff;
   font-size: 22px;
   font-weight: 300;
