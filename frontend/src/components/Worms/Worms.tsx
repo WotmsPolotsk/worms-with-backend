@@ -48,7 +48,10 @@ export const Worms = () => {
                 alignItems={isInfiniteDesktopView ? "center" : "flex-start"}
                 width="100%"
               >
-                <ImageStyled src={WormsImage} />
+                <ImageStyled
+                  src={WormsImage}
+                  alt="Купить червя-старателя | купить червя-дендробена"
+                />
                 <FlexWrapper
                   flexDirection="column"
                   alignItems="center"

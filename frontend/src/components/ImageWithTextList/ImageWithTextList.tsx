@@ -22,7 +22,11 @@ export const ImageWithTextList = () => {
             </Col>
           </Row>
         </Container>
-        <ImageWithText title="Фермерам" imageSrc={Farm}>
+        <ImageWithText
+          title="Фермерам"
+          alt="Червь-старателя для фермеров"
+          imageSrc={Farm}
+        >
           В саду или огороде червь старатель, разведение которого возможно в
           домашних условиях, разрыхлит почву (ни одна техника не справится с
           этой задачей лучше него), переработает органические остатки и насытит
@@ -33,6 +37,7 @@ export const ImageWithTextList = () => {
         </ImageWithText>
         <ImageWithText
           title="Рыбацким магазинам и рыбакам"
+          alt="Червь-дендробена для рыбаков"
           isRightToLef={isInfiniteDesktopView}
           imageSrc={Fishing}
         >
@@ -45,7 +50,11 @@ export const ImageWithTextList = () => {
           круглогодично. Их применение может быть эффективным как при рыбалке с
           поплавочными снастями, так и при использовании донных снастей.
         </ImageWithText>
-        <ImageWithText title="Животноводам" imageSrc={Chicken}>
+        <ImageWithText
+          title="Животноводам"
+          alt="Червь-старатель для животноводов"
+          imageSrc={Chicken}
+        >
           Наши черви богаты белком, содержат от 67% до 72% белка, что делает их
           отличным источником питательных веществ для животных. Кроме того, они
           содержат 7-19% жиров и 18-20% углеводов, что обеспечивает

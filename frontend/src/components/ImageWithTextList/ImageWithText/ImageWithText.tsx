@@ -13,10 +13,11 @@ interface ImageWithRextProps extends PropsWithChildren {
   isRightToLef?: boolean;
   imageSrc: string;
   title: string;
+  alt?: string;
 }
 
 export const ImageWithText = (props: ImageWithRextProps) => {
-  const { isRightToLef = false, imageSrc, children, title } = props;
+  const { isRightToLef = false, imageSrc, children, title, alt } = props;
 
   const ref = useRef<HTMLDivElement>(null);
   const { isShowed } = useIntersectionElement({ ref });
@@ -27,6 +28,7 @@ export const ImageWithText = (props: ImageWithRextProps) => {
         <RowStyled>
           <Col lg={4}>
             <ImageStyled
+              alt={alt}
               isShowed={isShowed}
               isRightToLeft={isRightToLef}
               src={imageSrc}
